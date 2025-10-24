@@ -73,13 +73,22 @@ graph TB
 - **Credit Categories:** Excellent/Good/Fair/Poor classifications
 - **Payment Analysis:** Monthly payment calculations
 
-## � **Quick Start**
+## 🚀 **Quick Start**
 
-### **1. Environment Setup**
+### **🐳 Docker Hub (Recommended)**
+```bash
+# Pull and run from Docker Hub
+docker run -d -p 9000:9000 asbhoskar/enhanced-loan-default-prediction:latest
+
+# Test the API
+curl http://localhost:9000/health
+```
+
+### **📋 Local Development Setup**
 ```bash
 # Clone repository
-git clone <your-repo-url>
-cd mlflow_loan_default_pipeline-1
+git clone https://github.com/asbhosekar/enhanced-loan-default-prediction.git
+cd enhanced-loan-default-prediction
 
 # Create virtual environment
 python -m venv .venv
@@ -90,7 +99,7 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-### **2. Train Models**
+### **🎯 Model Training (Optional)**
 ```bash
 # Basic training
 python train.py --model-type logistic
@@ -99,17 +108,18 @@ python train.py --model-type logistic
 python advanced_train.py
 ```
 
-### **3. Start API Server**
+### **🚀 API Server**
 ```bash
-# Set model path
+# Option 1: Docker (Recommended)
+docker run -p 9000:9000 asbhoskar/enhanced-loan-default-prediction:latest
+
+# Option 2: Local development
 $env:MODEL_PATH="./exported_model_tuned"  # Windows
 # export MODEL_PATH="./exported_model_tuned"  # Linux/Mac
-
-# Start enhanced API
 python enhanced_api.py
 ```
 
-### **4. Test API**
+### **🧪 API Testing**
 ```bash
 # Health check
 curl http://localhost:9000/health
@@ -131,6 +141,25 @@ curl -X POST "http://localhost:9000/predict" \
     "delinquency_2yrs": 0,
     "num_open_acc": 4
   }'
+```
+
+## 🐳 **Docker Hub**
+
+**Image:** [`asbhoskar/enhanced-loan-default-prediction`](https://hub.docker.com/r/asbhoskar/enhanced-loan-default-prediction)
+
+### **Available Tags:**
+- `latest` - Most recent stable version
+- `v2.1` - Enhanced features with 94.64% ROC-AUC
+- `v2.0` - Initial production release
+
+### **Quick Commands:**
+```bash
+# Pull latest image
+docker pull asbhoskar/enhanced-loan-default-prediction:latest
+
+# Run with Docker Compose
+curl -O https://raw.githubusercontent.com/asbhosekar/enhanced-loan-default-prediction/main/docker-compose.yml
+docker-compose up -d
 ```
 
 ## 📚 **API Documentation**
@@ -256,22 +285,34 @@ mlflow_loan_default_pipeline-1/
 
 ## 🐳 **Deployment Options**
 
-### **Local Development**
+### **🎯 Docker Hub (Production Ready)**
+```bash
+# Single container
+docker run -d -p 9000:9000 --name loan-api asbhoskar/enhanced-loan-default-prediction:latest
+
+# With Docker Compose
+docker-compose up -d
+
+# Health check
+curl http://localhost:9000/health
+```
+
+### **☁️ Cloud Deployment**
+```bash
+# AWS ECS Fargate (automated)
+./deploy-aws.sh
+
+# Kubernetes
+kubectl apply -f k8s-deployment.yaml
+
+# Manual deployment guide
+# See AWS_DEPLOYMENT_GUIDE.md for detailed instructions
+```
+
+### **💻 Local Development**
 ```bash
 python enhanced_api.py
 ```
-
-### **Docker Deployment**
-```bash
-cd predict_api
-docker build -t loan-default-api .
-docker run -p 9000:9000 loan-default-api
-```
-
-### **Cloud Deployment**
-- **AWS:** ECS, Lambda, SageMaker
-- **Azure:** Container Instances, Functions
-- **GCP:** Cloud Run, Cloud Functions
 
 ## 🛠 **Technology Stack**
 
