@@ -203,8 +203,8 @@ def predict(application: LoanApplication):
         
         return {
             "prediction": {
-                "default_probability": round(default_probability, 4),
-                "default_probability_percent": f"{default_probability*100:.2f}%",
+                "default_probability": round(float(default_probability), 4),
+                "default_probability_percent": f"{float(default_probability)*100:.2f}%",
                 "binary_prediction": binary_prediction,
                 "prediction_label": "Default" if binary_prediction == 1 else "No Default"
             },
@@ -215,12 +215,12 @@ def predict(application: LoanApplication):
             },
             "recommendation": {
                 "decision": recommendation,
-                "reasoning": f"Based on {default_probability*100:.2f}% default probability and {risk_level.lower()} risk level"
+                "reasoning": f"Based on {float(default_probability)*100:.2f}% default probability and {risk_level.lower()} risk level"
             },
             "feature_analysis": feature_insights,
             "model_info": {
                 "model_type": model_info.get("best_model", "gradient_boost"),
-                "model_performance": f"ROC-AUC: {model_info.get('best_score', 0.946):.3f}",
+                "model_performance": f"ROC-AUC: {float(model_info.get('best_score', 0.946)):.3f}",
                 "precision": "88.24%"
             }
         }

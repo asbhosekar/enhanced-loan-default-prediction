@@ -2,9 +2,12 @@
 
 ## 📋 Quick Setup
 
-**Base URL:** `http://localhost:9000`  
+**Base URL (Local):** `http://localhost:8080`  
+**Base URL (AWS EC2):** `http://54.234.127.110:8080`  
 **API Documentation:** Enhanced Loan Default Prediction API v2.1  
 **Model:** Tuned Gradient Boosting (94.64% ROC-AUC, 88.24% Precision)
+
+**🎯 Your Live API is Ready for Testing!**
 
 ---
 
@@ -14,7 +17,7 @@
 
 **Request:**
 ```
-GET http://localhost:9000/health
+GET http://localhost:8080/health
 ```
 
 **Headers:**
@@ -49,7 +52,7 @@ Content-Type: application/json
 
 **Request:**
 ```
-GET http://localhost:9000/model-info
+GET http://localhost:8080/model-info
 ```
 
 **Headers:**
@@ -83,7 +86,7 @@ Content-Type: application/json
 
 **Request:**
 ```
-POST http://localhost:9000/predict
+POST http://localhost:8080/predict
 ```
 
 **Headers:**
@@ -155,7 +158,7 @@ Content-Type: application/json
 
 **Request:**
 ```
-POST http://localhost:9000/predict
+POST http://localhost:8080/predict
 ```
 
 **Headers:**
@@ -222,7 +225,7 @@ Content-Type: application/json
 
 **Request:**
 ```
-POST http://localhost:9000/batch-predict
+POST http://localhost:9000/predict
 ```
 
 **Headers:**
@@ -322,7 +325,7 @@ Content-Type: application/json
 2. Click "Add"
 3. Environment name: "Loan Default API"
 4. Add variables:
-   - `base_url`: `http://localhost:9000`
+   - `base_url`: `http://54.234.127.110:8080` (for AWS) or `http://localhost:8080` (for local)
    - `api_version`: `2.1`
 
 ### **Step 3: Create Test Requests**
