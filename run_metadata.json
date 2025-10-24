@@ -1,0 +1,11 @@
+{
+  "run_id": "71b642d92de0448a95f3c6b294529cd0",
+  "accuracy": 0.91,
+  "precision": 0.8333333333333334,
+  "recall": 0.8,
+  "f1_score": 0.8163265306122449,
+  "roc_auc": 0.9717333333333333,
+  "params": {
+    "model_type": "logistic"
+  }
+}

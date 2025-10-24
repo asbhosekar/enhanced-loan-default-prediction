@@ -1,0 +1,31 @@
+{
+  "system_name": "Enhanced Loan Default Prediction System",
+  "version": "2.1",
+  "date": "2025-10-24 15:29:42",
+  "model_type": "Gradient Boosting Classifier",
+  "features": {
+    "original_features": 12,
+    "engineered_features": 14,
+    "total_features": 26
+  },
+  "performance": {
+    "roc_auc": 0.9464,
+    "precision": 0.8824,
+    "accuracy": 0.91,
+    "f1_score": 0.7692,
+    "recall": 0.6818
+  },
+  "targets": {
+    "roc_auc_target": 0.85,
+    "precision_target": 0.8,
+    "roc_auc_achieved": true,
+    "precision_achieved": true
+  },
+  "improvements": {
+    "from_baseline": {
+      "roc_auc_improvement": "+2.7%",
+      "precision_improvement": "+6.0%"
+    }
+  },
+  "deployment_ready": true
+}
