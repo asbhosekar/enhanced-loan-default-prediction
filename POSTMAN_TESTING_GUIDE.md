@@ -2,10 +2,10 @@
 
 ## 📋 Quick Setup
 
-**Base URL (Local):** `http://localhost:8080`  
-**Base URL (AWS EC2):** `http://54.234.127.110:8080`  
-**API Documentation:** Enhanced Loan Default Prediction API v2.1  
-**Model:** Tuned Gradient Boosting (94.64% ROC-AUC, 88.24% Precision)
+**Base URL (Local):** `http://localhost:8080` ✅ COMPLETED  
+**Base URL (AWS EC2):** `http://3.88.160.141:9000` ✅ DEPLOYED & WORKING  
+**API Documentation:** Enhanced Loan Default Prediction API v2.3 ✅ WORKING  
+**Model:** Tuned Gradient Boosting (94.6% ROC-AUC, 88.24% Precision)
 
 **🎯 Your Live API is Ready for Testing!**
 
@@ -188,8 +188,8 @@ Content-Type: application/json
 ```json
 {
   "prediction": {
-    "default_probability": 0.9139,
-    "default_probability_percent": "91.39%",
+    "default_probability": 0.925,
+    "default_probability_percent": "92.50%",
     "binary_prediction": 1,
     "prediction_label": "Default"
   },
@@ -200,21 +200,26 @@ Content-Type: application/json
   },
   "recommendation": {
     "decision": "Reject",
-    "reasoning": "Based on 91.39% default probability and very high risk level"
+    "reasoning": "Based on 92.50% default probability and very high risk level"
   },
   "feature_analysis": {
-    "income_to_loan_ratio": 1.67,
+    "income_to_loan_ratio": 1.6667,
     "monthly_payment": 250.0,
     "payment_to_income_ratio": 0.12,
     "risk_score": 3,
     "credit_score_category": "Poor",
     "risk_factors": {
       "employment_risk": true,
-      "high_interest": true,
+      "high_interest": false,
       "young_borrower": true,
       "multiple_delinquencies": true,
       "many_open_accounts": false
     }
+  },
+  "model_info": {
+    "model_type": "tuned_model",
+    "model_performance": "ROC-AUC: 0.946",
+    "precision": "88.24%"
   }
 }
 ```
@@ -225,7 +230,7 @@ Content-Type: application/json
 
 **Request:**
 ```
-POST http://localhost:9000/predict
+POST {{base_url}}/predict
 ```
 
 **Headers:**
@@ -325,8 +330,8 @@ Content-Type: application/json
 2. Click "Add"
 3. Environment name: "Loan Default API"
 4. Add variables:
-   - `base_url`: `http://54.234.127.110:8080` (for AWS) or `http://localhost:8080` (for local)
-   - `api_version`: `2.1`
+   - `base_url`: `http://98.92.230.238:9000` (for AWS) or `http://localhost:8080` (for local)
+   - `api_version`: `2.3`
 
 ### **Step 3: Create Test Requests**
 

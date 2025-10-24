@@ -1,0 +1,45 @@
+### Health Check
+GET http://localhost:8080/health
+Content-Type: application/json
+
+### High-Risk Borrower Prediction
+POST http://localhost:8080/predict
+Content-Type: application/json
+
+{
+  "age": 22,
+  "annual_income": 25000,
+  "employment_length": 1,
+  "home_ownership": "RENT",
+  "purpose": "debt_consolidation",
+  "loan_amount": 15000,
+  "term_months": 60,
+  "interest_rate": 18.5,
+  "dti": 45.0,
+  "credit_score": 580,
+  "delinquency_2yrs": 3,
+  "num_open_acc": 12
+}
+
+### Low-Risk Borrower Prediction
+POST http://localhost:8080/predict
+Content-Type: application/json
+
+{
+  "age": 35,
+  "annual_income": 80000,
+  "employment_length": 8,
+  "home_ownership": "OWN",
+  "purpose": "home_improvement",
+  "loan_amount": 20000,
+  "term_months": 36,
+  "interest_rate": 8.5,
+  "dti": 15.2,
+  "credit_score": 780,
+  "delinquency_2yrs": 0,
+  "num_open_acc": 4
+}
+
+### Model Information
+GET http://localhost:8080/model-info
+Content-Type: application/json
