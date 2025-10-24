@@ -1,0 +1,14 @@
+{
+  "age": 35,
+  "annual_income": 80000,
+  "employment_length": 8,
+  "home_ownership": "OWN",
+  "purpose": "home_improvement",
+  "loan_amount": 20000,
+  "term_months": 36,
+  "interest_rate": 8.5,
+  "dti": 15.2,
+  "credit_score": 780,
+  "delinquency_2yrs": 0,
+  "num_open_acc": 4
+}

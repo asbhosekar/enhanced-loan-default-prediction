@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  loan-default-api:
+    build: .
+    ports:
+      - "9000:9000"
+    environment:
+      - MODEL_PATH=/app/exported_model_tuned
+      - PORT=9000
+    volumes:
+      # Optional: Mount logs directory for debugging
+      - ./logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:9000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    
+  # Optional: Add MLflow tracking server
+  mlflow-server:
+    image: python:3.11-slim
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./mlruns:/mlruns
+      - ./mlflow.db:/mlflow.db
+    command: >
+      sh -c "pip install mlflow && 
+             mlflow server --backend-store-uri sqlite:///mlflow.db 
+             --default-artifact-root ./mlruns 
+             --host 0.0.0.0 --port 5000"
+    restart: unless-stopped
